@@ -1,5 +1,5 @@
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
 import {Text, Image, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
 import {SIGNIN} from '../../constants/routeNames';
@@ -7,11 +7,7 @@ import Button from '../common/button';
 import Input from '../common/input';
 import styles from './styles';
 
-const Form = () => {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+const Form = ({onSubmit, onChange, completed, errors}) => {
   const navigation = useNavigation();
 
   return (
@@ -33,26 +29,32 @@ const Form = () => {
         </TouchableOpacity>
       </View>
       <Input
-        label="Nom complet"
-        placeholder="Votre nom complet"
-        value={fullName}
-        onChangeText={setFullName}
+        label="Pseudo"
+        placeholder="Votre pseudo"
+        onChangeText={value => {
+          onChange({name: 'pseudo', value});
+        }}
+        error={errors.pseudo}
       />
       <Input
         label="Email"
         placeholder="Votre email"
-        value={email}
-        onChangeText={setEmail}
+        onChangeText={value => {
+          onChange({name: 'email', value});
+        }}
+        error={errors.email}
       />
       <Input
         icon={<Text>SHOW</Text>}
         label="Mot de passe"
         placeholder="Votre mot de passe"
-        value={password}
-        onChangeText={setPassword}
         secureTextEntry={true}
+        onChangeText={value => {
+          onChange({name: 'password', value});
+        }}
+        error={errors.password}
       />
-      <Button title="S'inscrire" color="primary" />
+      <Button onPress={onSubmit} title="S'inscrire" color="primary" />
     </>
   );
 };
