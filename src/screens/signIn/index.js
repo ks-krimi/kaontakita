@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Text} from 'react-native';
+import Button from '../../components/common/button';
 import Container from '../../components/common/container';
 import Input from '../../components/common/input';
 
@@ -16,6 +17,10 @@ const SignIn = () => {
         value={password}
         onChangeText={setPassword}
       />
+      <Button title="Sign In" color="primary" loading={true} disable />
+      <Button title="Hello" color="danger" />
+      <Button title="Bonjour" color="success" />
+      <Button title="Holla" color="warning" />
     </Container>
   );
 };
