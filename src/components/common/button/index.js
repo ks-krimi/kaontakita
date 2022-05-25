@@ -39,7 +39,14 @@ const Button = ({title, color, loading, disable, onPress}) => {
         {loading && (
           <ActivityIndicator color={colors.white} style={styles.loader} />
         )}
-        <Text style={{paddingHorizontal: 5, color: colors.white}}>{title}</Text>
+        <Text
+          style={{
+            paddingHorizontal: 5,
+            color: colors.white,
+            fontWeight: '700',
+          }}>
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

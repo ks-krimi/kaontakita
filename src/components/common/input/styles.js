@@ -8,7 +8,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.grey,
     borderRadius: 8,
-    paddingHorizontal: 5,
+    paddingHorizontal: 8,
     marginTop: 8,
     alignItems: 'center',
   },

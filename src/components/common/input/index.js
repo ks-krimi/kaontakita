@@ -50,7 +50,6 @@ const Input = ({
         <View>{icon && icon}</View>
         <TextInput
           style={[styles.input, style]}
-          placeholder={label}
           onChangeText={text => onChangeText(text)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
