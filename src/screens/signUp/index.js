@@ -23,9 +23,13 @@ const SignUp = () => {
 
   useFocusEffect(
     useCallback(() => {
-      if (data || errors) {
-        clearAuthState()(authDispatch);
-      }
+      // console.log('hello');
+      return () => {
+        // console.log('Bey');
+        if (data || errors) {
+          clearAuthState()(authDispatch);
+        }
+      };
     }, [data, errors]),
   );
 

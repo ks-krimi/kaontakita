@@ -5,7 +5,6 @@ import colors from '../../assets/theme/colors';
 import {SIGNUP} from '../../constants/routeNames';
 import Button from '../common/button';
 import Input from '../common/input';
-import Message from '../common/message';
 import styles from './styles';
 
 const Form = () => {
@@ -32,15 +31,6 @@ const Form = () => {
           <Text style={{color: colors.primary}}>Créer un compte</Text>
         </TouchableOpacity>
       </View>
-      <Message
-        retry
-        retryFunc={() => {
-          console.log('retried');
-        }}
-        message="Invalid credentials"
-        color="danger"
-      />
-      <Message onDismis={() => {}} message="Account created" color="success" />
       <Input
         label="Email"
         placeholder="Votre email"

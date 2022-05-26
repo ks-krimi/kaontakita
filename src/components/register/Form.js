@@ -6,6 +6,7 @@ import {SIGNIN} from '../../constants/routeNames';
 import Button from '../common/button';
 import Input from '../common/input';
 import styles from './styles';
+import Message from '../common/message';
 
 const Form = ({onSubmit, onChange, errors, error, loading}) => {
   const navigation = useNavigation();
@@ -28,6 +29,18 @@ const Form = ({onSubmit, onChange, errors, error, loading}) => {
           <Text style={{color: colors.primary}}>Se connecter</Text>
         </TouchableOpacity>
       </View>
+
+      {/**  error message  **/}
+      {error?.network && (
+        <Message
+          color="danger"
+          retry
+          retryFunc={() => {}}
+          message={error.network}
+        />
+      )}
+      {/* **************** */}
+
       <Input
         label="Pseudo"
         placeholder="Votre pseudo"
@@ -77,9 +90,6 @@ const Form = ({onSubmit, onChange, errors, error, loading}) => {
         color="primary"
         disable={loading}
       />
-      {error?.network && (
-        <Text style={{textAlign: 'center'}}>{error.network} </Text>
-      )}
     </>
   );
 };
