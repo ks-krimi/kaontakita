@@ -7,7 +7,7 @@ import Button from '../common/button';
 import Input from '../common/input';
 import styles from './styles';
 
-const Form = ({onSubmit, onChange, completed, errors}) => {
+const Form = ({onSubmit, onChange, errors}) => {
   const navigation = useNavigation();
 
   return (

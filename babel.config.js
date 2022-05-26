@@ -1,7 +1,13 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
-
-  // add the below line
-  plugins: ['react-native-reanimated/plugin'],
-  // this should be always last line
+  plugins: [
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+      },
+    ],
+    'react-native-reanimated/plugin', // this should be always last line
+  ],
 };
