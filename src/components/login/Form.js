@@ -1,16 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React from 'react';
 import {Text, Image, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
 import {SIGNUP} from '../../constants/routeNames';
 import Button from '../common/button';
 import Input from '../common/input';
+import Message from '../common/message';
 import styles from './styles';
 
-const Form = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
+const Form = ({onSubmit, onChange, error, loading}) => {
   const navigation = useNavigation();
 
   return (
@@ -31,21 +29,49 @@ const Form = () => {
           <Text style={{color: colors.primary}}>Créer un compte</Text>
         </TouchableOpacity>
       </View>
+
+      {/**  network error message  **/}
+      {error?.network && (
+        <Message
+          color="danger"
+          retry
+          retryFunc={() => {
+            onSubmit();
+          }}
+          message={error.network}
+        />
+      )}
+      {/* **************** */}
+
+      {/** error message  **/}
+      {error && !error?.network && (
+        <Message color="danger" onDismis={() => {}} message={error.detail} />
+      )}
+      {/* **************** */}
+
       <Input
-        label="Email"
-        placeholder="Votre email"
-        value={email}
-        onChangeText={setEmail}
+        label="Pseudo"
+        placeholder="Votre pseudo"
+        onChangeText={value => {
+          onChange({name: 'username', value});
+        }}
       />
       <Input
         icon={<Text>SHOW</Text>}
         label="Mot de passe"
         placeholder="Votre mot de passe"
-        value={password}
-        onChangeText={setPassword}
+        onChangeText={value => {
+          onChange({name: 'password', value});
+        }}
         secureTextEntry={true}
       />
-      <Button title="Se connecter" color="primary" />
+      <Button
+        disable={loading}
+        loading={loading}
+        onPress={onSubmit}
+        title="Se connecter"
+        color="primary"
+      />
     </>
   );
 };
