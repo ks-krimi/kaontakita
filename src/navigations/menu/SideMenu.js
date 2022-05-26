@@ -9,9 +9,10 @@ import {
 } from 'react-native';
 import Container from '../../components/common/container';
 import {SETTINGS} from '../../constants/routeNames';
+import logout from '../../context/actions/auth/logout';
 import styles from './styles';
 
-const SideMenu = ({navigation}) => {
+const SideMenu = ({navigation, authDispatch}) => {
   const handleLogout = () => {
     navigation.closeDrawer();
     Alert.alert('Déconnexion', 'Sur de vouloir se déconnecter ?', [
@@ -21,7 +22,9 @@ const SideMenu = ({navigation}) => {
       },
       {
         text: 'Oui',
-        onPress: () => {},
+        onPress: () => {
+          logout()(authDispatch);
+        },
       },
     ]);
   };
