@@ -33,9 +33,19 @@ const SignUp = () => {
 
   const onSubmit = () => {
     // validation
-    if (!form.pseudo) {
+    if (!form.username) {
       setErrors(prev => {
-        return {...prev, pseudo: 'Le pseudo est vide'};
+        return {...prev, username: 'Le pseudo est vide'};
+      });
+    }
+    if (!form.firstname) {
+      setErrors(prev => {
+        return {...prev, firstname: 'Le nom est vide'};
+      });
+    }
+    if (!form.lastname) {
+      setErrors(prev => {
+        return {...prev, lastname: 'Le prénom est vide'};
       });
     }
     if (!form.email) {

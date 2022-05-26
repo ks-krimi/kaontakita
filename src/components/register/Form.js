@@ -32,9 +32,25 @@ const Form = ({onSubmit, onChange, errors}) => {
         label="Pseudo"
         placeholder="Votre pseudo"
         onChangeText={value => {
-          onChange({name: 'pseudo', value});
+          onChange({name: 'username', value});
         }}
-        error={errors.pseudo}
+        error={errors.username}
+      />
+      <Input
+        label="Nom"
+        placeholder="Votre nom"
+        onChangeText={value => {
+          onChange({name: 'firstname', value});
+        }}
+        error={errors.firstname}
+      />
+      <Input
+        label="Prénom"
+        placeholder="Votre prénom"
+        onChangeText={value => {
+          onChange({name: 'lastname', value});
+        }}
+        error={errors.lastname}
       />
       <Input
         label="Email"
