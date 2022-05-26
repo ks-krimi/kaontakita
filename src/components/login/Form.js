@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, Image, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
 import {SIGNUP} from '../../constants/routeNames';
@@ -9,6 +9,7 @@ import Message from '../common/message';
 import styles from './styles';
 
 const Form = ({onSubmit, onChange, error, loading}) => {
+  const [isSecured, setIsSecured] = useState(true);
   const navigation = useNavigation();
 
   return (
@@ -57,13 +58,17 @@ const Form = ({onSubmit, onChange, error, loading}) => {
         }}
       />
       <Input
-        icon={<Text>SHOW</Text>}
+        icon={
+          <TouchableOpacity onPress={() => setIsSecured(!isSecured)}>
+            <Text>{isSecured ? 'SHOW' : 'HIDE'}</Text>
+          </TouchableOpacity>
+        }
+        secureTextEntry={isSecured}
         label="Mot de passe"
         placeholder="Votre mot de passe"
         onChangeText={value => {
           onChange({name: 'password', value});
         }}
-        secureTextEntry={true}
       />
       <Button
         disable={loading}

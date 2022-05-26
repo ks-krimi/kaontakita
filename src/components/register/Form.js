@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {Text, Image, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
@@ -9,6 +9,7 @@ import styles from './styles';
 import Message from '../common/message';
 
 const Form = ({onSubmit, onChange, errors, error, loading}) => {
+  const [isSecured, setIsSecured] = useState(true);
   const navigation = useNavigation();
 
   return (
@@ -74,10 +75,14 @@ const Form = ({onSubmit, onChange, errors, error, loading}) => {
         error={errors.email || error?.email?.[0]}
       />
       <Input
-        icon={<Text>SHOW</Text>}
+        icon={
+          <TouchableOpacity onPress={() => setIsSecured(!isSecured)}>
+            <Text>{isSecured ? 'SHOW' : 'HIDE'}</Text>
+          </TouchableOpacity>
+        }
+        secureTextEntry={isSecured}
         label="Mot de passe"
         placeholder="Votre mot de passe"
-        secureTextEntry={true}
         onChangeText={value => {
           onChange({name: 'password', value});
         }}
