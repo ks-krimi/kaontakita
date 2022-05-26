@@ -1,10 +1,31 @@
 import React from 'react';
-import {Text, SafeAreaView, Image, View, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  Image,
+  View,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import Container from '../../components/common/container';
 import {SETTINGS} from '../../constants/routeNames';
 import styles from './styles';
 
 const SideMenu = ({navigation}) => {
+  const handleLogout = () => {
+    navigation.closeDrawer();
+    Alert.alert('Déconnexion', 'Sur de vouloir se déconnecter ?', [
+      {
+        text: 'Non',
+        onPress: () => {},
+      },
+      {
+        text: 'Oui',
+        onPress: () => {},
+      },
+    ]);
+  };
+
   const menuItems = [
     {
       icon: <Text>S</Text>,
@@ -16,9 +37,7 @@ const SideMenu = ({navigation}) => {
     {
       icon: <Text>L</Text>,
       name: 'Logout',
-      onPress: () => {
-        console.log('logout');
-      },
+      onPress: handleLogout,
     },
   ];
 
