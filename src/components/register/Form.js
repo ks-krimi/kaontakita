@@ -7,7 +7,7 @@ import Button from '../common/button';
 import Input from '../common/input';
 import styles from './styles';
 
-const Form = ({onSubmit, onChange, errors}) => {
+const Form = ({onSubmit, onChange, errors, error, loading}) => {
   const navigation = useNavigation();
 
   return (
@@ -34,7 +34,7 @@ const Form = ({onSubmit, onChange, errors}) => {
         onChangeText={value => {
           onChange({name: 'username', value});
         }}
-        error={errors.username}
+        error={errors.username || error?.username?.[0]}
       />
       <Input
         label="Nom"
@@ -42,7 +42,7 @@ const Form = ({onSubmit, onChange, errors}) => {
         onChangeText={value => {
           onChange({name: 'firstname', value});
         }}
-        error={errors.firstname}
+        error={errors.firstname || error?.firstname?.[0]}
       />
       <Input
         label="Prénom"
@@ -50,7 +50,7 @@ const Form = ({onSubmit, onChange, errors}) => {
         onChangeText={value => {
           onChange({name: 'lastname', value});
         }}
-        error={errors.lastname}
+        error={errors.lastname || error?.lastname?.[0]}
       />
       <Input
         label="Email"
@@ -58,7 +58,7 @@ const Form = ({onSubmit, onChange, errors}) => {
         onChangeText={value => {
           onChange({name: 'email', value});
         }}
-        error={errors.email}
+        error={errors.email || error?.email?.[0]}
       />
       <Input
         icon={<Text>SHOW</Text>}
@@ -68,9 +68,18 @@ const Form = ({onSubmit, onChange, errors}) => {
         onChangeText={value => {
           onChange({name: 'password', value});
         }}
-        error={errors.password}
+        error={errors.password || error?.password?.[0]}
       />
-      <Button onPress={onSubmit} title="S'inscrire" color="primary" />
+      <Button
+        loading={loading}
+        onPress={onSubmit}
+        title="S'inscrire"
+        color="primary"
+        disable={loading}
+      />
+      {error?.network && (
+        <Text style={{textAlign: 'center'}}>{error.network} </Text>
+      )}
     </>
   );
 };
