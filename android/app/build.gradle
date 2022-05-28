@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
@@ -264,6 +265,9 @@ dependencies {
     //For animated GIF support
     implementation 'com.facebook.fresco:fresco:2.0.0'
     implementation 'com.facebook.fresco:animated-gif:2.0.0'
+    
+    // vector icons
+    implementation project(':react-native-vector-icons')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import {Text} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Contacts from '../screens/contacts';
 import Contact from '../screens/contact';
@@ -14,21 +13,9 @@ import {
 
 const HomeStack = createNativeStackNavigator();
 
-const HomeNavigator = ({navigation}) => {
+const HomeNavigator = () => {
   return (
-    <HomeStack.Navigator
-      initialRouteName={CONTACT_LIST}
-      screenOptions={{
-        headerLeft: () => (
-          <Text
-            style={{paddingRight: 10}}
-            onPress={() => {
-              navigation.openDrawer();
-            }}>
-            ICON
-          </Text>
-        ),
-      }}>
+    <HomeStack.Navigator initialRouteName={CONTACT_LIST}>
       <HomeStack.Screen name={CONTACT_LIST} component={Contacts} />
       <HomeStack.Screen name={CONTACT_DETAIL} component={Contact} />
       <HomeStack.Screen name={CREATE_CONTACT} component={Create} />
