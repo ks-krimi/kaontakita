@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import {useNavigation} from '@react-navigation/native';
 import Container from '../../components/common/container';
 import {Form} from '../../components/login';
 import {GlobalContext} from '../../context/Provider';

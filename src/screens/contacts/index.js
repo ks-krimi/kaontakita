@@ -1,7 +1,9 @@
-import React, {useLayoutEffect, useState} from 'react';
+import React, {useLayoutEffect, useState, useContext, useEffect} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from '../../components/common/icon';
 import {Wrapper} from '../../components/contacts';
+import getContacts from '../../context/actions/contacts/getContacts';
+import {GlobalContext} from '../../context/Provider';
 
 const Contacts = ({navigation}) => {
   useLayoutEffect(() => {
@@ -22,10 +24,27 @@ const Contacts = ({navigation}) => {
     });
   }, [navigation]);
 
+  const {
+    contactsDispatch,
+    contactsState: {
+      getContacts: {data, loading, error},
+    },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getContacts()(contactsDispatch);
+  }, []);
+
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <Wrapper modalVisible={modalVisible} setModalVisible={setModalVisible} />
+    <Wrapper
+      loading={loading}
+      data={data}
+      error={error}
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
+    />
   );
 };
 
