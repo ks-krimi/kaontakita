@@ -13,6 +13,8 @@ import Message from '../common/message';
 import colors from '../../assets/theme/colors';
 import Icon from '../common/icon';
 import styles, {getRandomColor} from './styles';
+import {useNavigation} from '@react-navigation/native';
+import {CREATE_CONTACT} from '../../constants/routeNames';
 
 const renderItem = ({item}) => {
   return (
@@ -40,6 +42,8 @@ const renderItem = ({item}) => {
 };
 
 const Wrapper = ({modalVisible, setModalVisible, loading, data, error}) => {
+  const {navigate} = useNavigation();
+
   return (
     <SafeAreaView style={styles.root}>
       {loading ? (
@@ -58,10 +62,21 @@ const Wrapper = ({modalVisible, setModalVisible, loading, data, error}) => {
               style={{
                 minHeight: 50,
                 alignItems: 'flex-end',
-              }}></View>
+              }}
+            />
           }
         />
       )}
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => navigate(CREATE_CONTACT)}>
+        <Icon
+          type="MaterialIcons"
+          color={colors.white}
+          name="create"
+          size={30}
+        />
+      </TouchableOpacity>
       <Modal
         visible={modalVisible}
         setVisible={setModalVisible}

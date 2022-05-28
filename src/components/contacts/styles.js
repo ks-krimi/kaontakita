@@ -15,8 +15,8 @@ export default StyleSheet.create({
     marginHorizontal: 15,
   },
   avatar: {
-    width: 45,
-    height: 45,
+    width: 42,
+    height: 42,
     borderRadius: 50,
     marginRight: 10,
     justifyContent: 'center',
@@ -39,6 +39,17 @@ export default StyleSheet.create({
     fontWeight: '700',
   },
   separator: {},
+  fab: {
+    backgroundColor: colors.primary,
+    width: 60,
+    height: 60,
+    borderRadius: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 40,
+    right: 20,
+  },
 });
 
 export function getRandomColor() {
