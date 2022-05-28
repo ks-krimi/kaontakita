@@ -9,7 +9,7 @@ import {
 import colors from '../../../assets/theme/colors';
 import styles from './styles';
 
-const Button = ({title, color, loading, disable, onPress}) => {
+const Button = ({title, color, loading, disable, onPress, style}) => {
   const getBgColor = () => {
     if (disable) {
       return colors.grey;
@@ -34,7 +34,7 @@ const Button = ({title, color, loading, disable, onPress}) => {
     <TouchableOpacity
       onPress={onPress}
       disabled={disable}
-      style={[styles.root, {backgroundColor: getBgColor()}]}>
+      style={[styles.root, style, {backgroundColor: getBgColor()}]}>
       <View style={styles.wrapper}>
         {loading && (
           <ActivityIndicator color={colors.white} style={styles.loader} />

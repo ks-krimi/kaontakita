@@ -1,7 +1,7 @@
-import React, {useLayoutEffect} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
-import Container from '../../components/common/container';
+import React, {useLayoutEffect, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
 import Icon from '../../components/common/icon';
+import {Wrapper} from '../../components/contacts';
 
 const Contacts = ({navigation}) => {
   useLayoutEffect(() => {
@@ -22,10 +22,10 @@ const Contacts = ({navigation}) => {
     });
   }, [navigation]);
 
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
-    <Container>
-      <Text>Hello contacts</Text>
-    </Container>
+    <Wrapper modalVisible={modalVisible} setModalVisible={setModalVisible} />
   );
 };
 
