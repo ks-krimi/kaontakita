@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Container from '../../components/common/container';
 import {SETTINGS} from '../../constants/routeNames';
 import logout from '../../context/actions/auth/logout';
@@ -31,14 +32,15 @@ const SideMenu = ({navigation, authDispatch}) => {
 
   const menuItems = [
     {
-      icon: <Text>S</Text>,
+      icon: <MaterialIcons name="settings" size={17} />,
       name: 'Settings',
       onPress: () => {
+        navigation.closeDrawer();
         navigation.navigate(SETTINGS);
       },
     },
     {
-      icon: <Text>L</Text>,
+      icon: <MaterialIcons name="logout" size={17} />,
       name: 'Logout',
       onPress: handleLogout,
     },
