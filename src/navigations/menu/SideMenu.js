@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Container from '../../components/common/container';
 import {SETTINGS} from '../../constants/routeNames';
 import logout from '../../context/actions/auth/logout';
+import Icon from '../../components/common/icon';
 import styles from './styles';
 
 const SideMenu = ({navigation, authDispatch}) => {
@@ -32,7 +32,7 @@ const SideMenu = ({navigation, authDispatch}) => {
 
   const menuItems = [
     {
-      icon: <MaterialIcons name="settings" size={17} />,
+      icon: <Icon type="MaterialIcons" name="settings" size={17} />,
       name: 'Settings',
       onPress: () => {
         navigation.closeDrawer();
@@ -40,7 +40,7 @@ const SideMenu = ({navigation, authDispatch}) => {
       },
     },
     {
-      icon: <MaterialIcons name="logout" size={17} />,
+      icon: <Icon type="MaterialIcons" name="logout" size={17} />,
       name: 'Logout',
       onPress: handleLogout,
     },

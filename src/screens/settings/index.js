@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
+import Container from '../../components/common/container';
 
 const Settings = () => {
   return (
-    <View>
+    <Container>
       <Text>Hello settings</Text>
-    </View>
+    </Container>
   );
 };
 

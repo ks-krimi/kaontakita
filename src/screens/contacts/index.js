@@ -1,7 +1,7 @@
 import React, {useLayoutEffect} from 'react';
 import {Text, TouchableOpacity} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Container from '../../components/common/container';
+import Icon from '../../components/common/icon';
 
 const Contacts = ({navigation}) => {
   useLayoutEffect(() => {
@@ -11,7 +11,12 @@ const Contacts = ({navigation}) => {
           onPress={() => {
             navigation.toggleDrawer();
           }}>
-          <MaterialIcons style={{padding: 10}} size={25} name="menu" />
+          <Icon
+            style={{paddingRight: 30}}
+            type="MaterialIcons"
+            name="menu"
+            size={25}
+          />
         </TouchableOpacity>
       ),
     });
@@ -19,7 +24,7 @@ const Contacts = ({navigation}) => {
 
   return (
     <Container>
-      <Text>Hello contacts here</Text>
+      <Text>Hello contacts</Text>
     </Container>
   );
 };
