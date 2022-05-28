@@ -38,6 +38,7 @@ export default StyleSheet.create({
   numero: {
     fontWeight: '700',
   },
+  separator: {},
 });
 
 export function getRandomColor() {

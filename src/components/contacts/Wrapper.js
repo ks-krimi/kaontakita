@@ -49,6 +49,7 @@ const Wrapper = ({modalVisible, setModalVisible, loading, data, error}) => {
           data={data}
           renderItem={renderItem}
           keyExtractor={item => item.id}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
           ListEmptyComponent={
             <Message color="primary" message="Pas de contacts trouver." />
           }
