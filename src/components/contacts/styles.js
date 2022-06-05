@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {max, min} from 'react-native-reanimated';
 import colors from '../../assets/theme/colors';
 
 export default StyleSheet.create({

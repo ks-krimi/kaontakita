@@ -1,12 +1,8 @@
-import {View, Text} from 'react-native';
 import React from 'react';
+import {New} from '../../components/contacts';
 
 const Create = () => {
-  return (
-    <View>
-      <Text>Hello create contact</Text>
-    </View>
-  );
+  return <New />;
 };
 
 export default Create;
