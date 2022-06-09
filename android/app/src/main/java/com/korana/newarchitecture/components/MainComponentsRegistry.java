@@ -1,4 +1,4 @@
-package com.korana.newarchitecture.components;
+package com.krimi.kaontakita.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

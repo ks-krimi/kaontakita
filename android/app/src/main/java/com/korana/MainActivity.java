@@ -1,4 +1,4 @@
-package com.korana;
+package com.krimi.kaontakita;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

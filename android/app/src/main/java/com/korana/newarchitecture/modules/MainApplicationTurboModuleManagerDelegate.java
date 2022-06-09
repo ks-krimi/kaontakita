@@ -1,4 +1,4 @@
-package com.korana.newarchitecture.modules;
+package com.krimi.kaontakita.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
