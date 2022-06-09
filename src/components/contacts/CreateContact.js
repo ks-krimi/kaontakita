@@ -6,7 +6,6 @@ import Button from '../common/button';
 import Container from '../common/container';
 import Input from '../common/input';
 import {DEFAULT_IMAGE_URI} from '../../constants/general';
-import {color} from 'react-native-reanimated';
 
 const CreateContact = ({
   error,
