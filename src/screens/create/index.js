@@ -9,6 +9,7 @@ const Create = () => {
   const refSheet = useRef(null);
   const {navigate} = useNavigation();
   const [form, setForm] = useState({phone_code: '+261', country_code: 'MG'});
+  const [localFile, setLocalFile] = useState(null);
   const {
     contactsDispatch,
     contactsState: {
@@ -42,6 +43,12 @@ const Create = () => {
     }
   };
 
+  const onFileSelected = image => {
+    console.log(image);
+    setLocalFile(image);
+    closeSheet();
+  };
+
   return (
     <New
       form={form}
@@ -54,6 +61,8 @@ const Create = () => {
       refSheet={refSheet}
       openSheet={openSheet}
       closeSheet={closeSheet}
+      onFileSelected={onFileSelected}
+      localFile={localFile}
     />
   );
 };

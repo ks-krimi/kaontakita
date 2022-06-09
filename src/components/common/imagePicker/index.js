@@ -1,20 +1,43 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import ImageCropPicker from 'react-native-image-crop-picker';
 import Icon from '../icon';
 import styles from './styles';
 
-const ImagePicker = React.forwardRef(({}, ref) => {
+const ImagePicker = React.forwardRef(({onFileSelected}, ref) => {
   const options = [
     {
       name: 'Prendre une photo',
       icon: <Icon name="camera" type="MaterialIcons" size={24} />,
-      onPress: () => {},
+      onPress: () => {
+        ImageCropPicker.openCamera({
+          width: 300,
+          height: 400,
+          cropping: true,
+          freeStyleCropEnabled: true,
+        })
+          .then(image => {
+            onFileSelected(image);
+          })
+          .catch(err => console.log(err));
+      },
     },
     {
       name: 'Choisir dans la gallerie',
       icon: <Icon name="image" type="MaterialIcons" size={24} />,
-      onPress: () => {},
+      onPress: () => {
+        ImageCropPicker.openPicker({
+          width: 300,
+          height: 400,
+          cropping: true,
+          freeStyleCropEnabled: true,
+        })
+          .then(image => {
+            onFileSelected(image);
+          })
+          .catch(err => console.log(err));
+      },
     },
   ];
 

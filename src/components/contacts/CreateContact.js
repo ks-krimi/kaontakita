@@ -19,15 +19,18 @@ const CreateContact = ({
   refSheet,
   openSheet,
   closeSheet,
+  onFileSelected,
+  localFile,
 }) => {
   return (
     <Container style={{backgroundColor: colors.white}}>
       <Image
-        source={{uri: DEFAULT_IMAGE_URI}}
+        source={{uri: localFile?.path || DEFAULT_IMAGE_URI}}
         style={{
-          width: 125,
-          height: 125,
+          width: 150,
+          height: 150,
           alignSelf: 'center',
+          borderRadius: 8,
         }}
       />
       <TouchableOpacity onPress={openSheet}>
@@ -103,7 +106,12 @@ const CreateContact = ({
         color="primary"
         title="Enregister"
       />
-      <ImagePicker ref={refSheet} open={openSheet} close={closeSheet} />
+      <ImagePicker
+        onFileSelected={onFileSelected}
+        ref={refSheet}
+        open={openSheet}
+        close={closeSheet}
+      />
     </Container>
   );
 };
