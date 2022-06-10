@@ -1,4 +1,12 @@
-import React, {useLayoutEffect, useState, useContext, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useFocusEffect} from '@react-navigation/native';
+import React, {
+  useLayoutEffect,
+  useState,
+  useContext,
+  useEffect,
+  useCallback,
+} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from '../../components/common/icon';
 import {Wrapper} from '../../components/contacts';
@@ -6,6 +14,8 @@ import getContacts from '../../context/actions/contacts/getContacts';
 import {GlobalContext} from '../../context/Provider';
 
 const Contacts = ({navigation}) => {
+  const [sortBy, setSortBy] = useState(null);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -35,6 +45,19 @@ const Contacts = ({navigation}) => {
     getContacts()(contactsDispatch);
   }, []);
 
+  const getSettings = async () => {
+    const sortPref = await AsyncStorage.getItem('sortBy');
+    if (sortPref) {
+      setSortBy(sortPref);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getSettings();
+    }, []),
+  );
+
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -44,6 +67,7 @@ const Contacts = ({navigation}) => {
       error={error}
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
+      sortBy={sortBy}
     />
   );
 };

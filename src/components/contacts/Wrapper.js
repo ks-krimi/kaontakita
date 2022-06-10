@@ -41,7 +41,14 @@ const renderItem = ({item}) => {
   );
 };
 
-const Wrapper = ({modalVisible, setModalVisible, loading, data, error}) => {
+const Wrapper = ({
+  modalVisible,
+  setModalVisible,
+  loading,
+  data,
+  sortBy,
+  error,
+}) => {
   const {navigate} = useNavigation();
 
   return (
@@ -50,7 +57,26 @@ const Wrapper = ({modalVisible, setModalVisible, loading, data, error}) => {
         <ActivityIndicator color={colors.primary} size="large" />
       ) : (
         <FlatList
-          data={data}
+          data={
+            sortBy
+              ? data.sort((a, b) => {
+                  if (sortBy === 'First name') {
+                    if (b.first_name > a.first_name) {
+                      return -1;
+                    } else {
+                      return 1;
+                    }
+                  }
+                  if (sortBy === 'Last name') {
+                    if (b.last_name > a.last_name) {
+                      return -1;
+                    } else {
+                      return 1;
+                    }
+                  }
+                })
+              : data
+          }
           renderItem={renderItem}
           keyExtractor={item => item.id}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
