@@ -5,3 +5,4 @@ export const SETTINGS = 'Settings';
 export const SIGNIN = 'Sign in';
 export const SIGNUP = 'Sign up';
 export const HOME_NAVIGATOR = 'Home';
+export const LOGOUT = 'LOGOUT';
