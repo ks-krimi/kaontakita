@@ -14,11 +14,15 @@ import colors from '../../assets/theme/colors';
 import Icon from '../common/icon';
 import styles, {getRandomColor} from './styles';
 import {useNavigation} from '@react-navigation/native';
-import {CREATE_CONTACT} from '../../constants/routeNames';
+import {CREATE_CONTACT, CONTACT_DETAIL} from '../../constants/routeNames';
+import {navigate} from '../../navigations/menu/RootNavigation';
 
 const renderItem = ({item}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() => {
+        navigate(CONTACT_DETAIL, {contact: item});
+      }}>
       <View style={styles.item}>
         {item.contact_picture ? (
           <Image style={styles.avatar} source={{uri: item.contact_picture}} />
