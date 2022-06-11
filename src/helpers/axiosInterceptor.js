@@ -2,7 +2,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import env from '../config/env';
 import {navigate} from '../navigations/menu/RootNavigation';
-import {LOGOUT, SIGNIN} from '../constants/routeNames';
+import {LOGOUT} from '../constants/routeNames';
 
 const headers = {};
 

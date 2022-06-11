@@ -4,12 +4,14 @@ import {New} from '../../components/contacts';
 import {CONTACT_LIST} from '../../constants/routeNames';
 import createContact from '../../context/actions/contacts/createContact';
 import {GlobalContext} from '../../context/Provider';
+import uploadImage from '../../helpers/uploadImage';
 
 const Create = () => {
   const refSheet = useRef(null);
   const {navigate} = useNavigation();
   const [form, setForm] = useState({phone_code: '+261', country_code: 'MG'});
   const [localFile, setLocalFile] = useState(null);
+  const [uploadLoading, setUploadLoading] = useState(false);
   const {
     contactsDispatch,
     contactsState: {
@@ -22,9 +24,22 @@ const Create = () => {
   };
 
   const onSubmit = () => {
-    createContact(form)(contactsDispatch)(() => {
-      navigate(CONTACT_LIST);
-    });
+    if (localFile?.size) {
+      setUploadLoading(true);
+      uploadImage(localFile)(url => {
+        setUploadLoading(false);
+        createContact({...form, contact_picture: url})(contactsDispatch)(() => {
+          navigate(CONTACT_LIST);
+        });
+      })(err => {
+        setUploadLoading(false);
+        console.log('=>>>>>>>>>>>>>>>>>>>>>>', err);
+      });
+    } else {
+      createContact(form)(contactsDispatch)(() => {
+        navigate(CONTACT_LIST);
+      });
+    }
   };
 
   const toggleValue = () => {
@@ -56,7 +71,7 @@ const Create = () => {
       onChange={onChange}
       onSubmit={onSubmit}
       error={error}
-      loading={loading}
+      loading={loading || uploadLoading}
       toggleValue={toggleValue}
       refSheet={refSheet}
       openSheet={openSheet}

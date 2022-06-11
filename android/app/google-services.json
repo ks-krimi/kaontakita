@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "386778260810",
+    "project_id": "kaontakita",
+    "storage_bucket": "kaontakita.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386778260810:android:e8ba09fe110e5ef863cdb3",
+        "android_client_info": {
+          "package_name": "com.krimi.kaontakita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386778260810-4ot5fgp714bap378h676mcqam75le48q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0HP1hJwBeUBW4il9wsFrML0kwuBU5b4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386778260810-4ot5fgp714bap378h676mcqam75le48q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

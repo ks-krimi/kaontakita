@@ -1,6 +1,9 @@
 apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
+// for firebase
+apply plugin: 'com.google.gms.google-services'
+
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
