@@ -4,6 +4,7 @@ import {Text, Image, TouchableOpacity, View} from 'react-native';
 import colors from '../../assets/theme/colors';
 import {SIGNUP} from '../../constants/routeNames';
 import Button from '../common/button';
+import Icon from '../common/icon';
 import Input from '../common/input';
 import Message from '../common/message';
 import styles from './styles';
@@ -60,7 +61,13 @@ const Form = ({onSubmit, onChange, error, loading}) => {
       <Input
         icon={
           <TouchableOpacity onPress={() => setIsSecured(!isSecured)}>
-            <Text>{isSecured ? 'SHOW' : 'HIDE'}</Text>
+            <Text>
+              {isSecured ? (
+                <Icon type="MaterialIcons" name="visibility" size={21} />
+              ) : (
+                <Icon type="MaterialIcons" name="visibility-off" size={21} />
+              )}
+            </Text>
           </TouchableOpacity>
         }
         secureTextEntry={isSecured}

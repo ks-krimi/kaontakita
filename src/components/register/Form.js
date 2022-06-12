@@ -7,6 +7,7 @@ import Button from '../common/button';
 import Input from '../common/input';
 import styles from './styles';
 import Message from '../common/message';
+import Icon from '../common/icon';
 
 const Form = ({onSubmit, onChange, errors, error, loading}) => {
   const [isSecured, setIsSecured] = useState(true);
@@ -73,20 +74,6 @@ const Form = ({onSubmit, onChange, errors, error, loading}) => {
           onChange({name: 'email', value});
         }}
         error={errors.email || error?.email?.[0]}
-      />
-      <Input
-        icon={
-          <TouchableOpacity onPress={() => setIsSecured(!isSecured)}>
-            <Text>{isSecured ? 'SHOW' : 'HIDE'}</Text>
-          </TouchableOpacity>
-        }
-        secureTextEntry={isSecured}
-        label="Mot de passe"
-        placeholder="Votre mot de passe"
-        onChangeText={value => {
-          onChange({name: 'password', value});
-        }}
-        error={errors.password || error?.password?.[0]}
       />
       <Button
         loading={loading}

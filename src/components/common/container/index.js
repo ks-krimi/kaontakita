@@ -5,7 +5,12 @@ import styles from './styles';
 const Container = ({style, children}) => {
   return (
     <ScrollView style={[styles.view, style]}>
-      <View>{children}</View>
+      <View
+        style={{
+          marginBottom: 30,
+        }}>
+        {children}
+      </View>
     </ScrollView>
   );
 };

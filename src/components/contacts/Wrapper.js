@@ -33,7 +33,9 @@ const renderItem = ({item}) => {
         )}
         <View style={styles.info}>
           <View>
-            <Text style={styles.lastmame}> {item.last_name}</Text>
+            <Text style={styles.lastmame}>
+              {item.first_name} {item.last_name}
+            </Text>
             <Text style={styles.numero}> {item.phone_number}</Text>
           </View>
           <TouchableOpacity>
