@@ -24,7 +24,9 @@ const CreateContact = ({
   return (
     <Container style={{backgroundColor: colors.white}}>
       <Image
-        source={{uri: localFile?.path || DEFAULT_IMAGE_URI}}
+        source={{
+          uri: form?.contact_picture || localFile?.path || DEFAULT_IMAGE_URI,
+        }}
         style={{
           width: 150,
           height: 150,
@@ -47,6 +49,7 @@ const CreateContact = ({
           onChange({name: 'first_name', value});
         }}
         error={error?.first_name?.[0]}
+        value={form?.first_name}
       />
       <Input
         label="Prénom"
@@ -55,6 +58,7 @@ const CreateContact = ({
           onChange({name: 'last_name', value});
         }}
         error={error?.last_name?.[0]}
+        value={form?.last_name}
       />
       <Input
         iconPosition="left"
@@ -70,7 +74,7 @@ const CreateContact = ({
               setForm({
                 ...form,
                 phone_code: callingCode[0],
-                country_code: cca2,
+                country_code: cca2 || form?.country_code,
               });
             }}
           />
@@ -81,6 +85,7 @@ const CreateContact = ({
           onChange({name: 'phone_number', value});
         }}
         error={error?.phone_number?.[0]}
+        value={form?.phone_number}
       />
       <View
         style={{
