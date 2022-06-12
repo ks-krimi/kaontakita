@@ -1,42 +1,56 @@
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Setting from '../../components/settings';
+import {useNavigation} from '@react-navigation/native';
 
 const Settings = () => {
   const [email, setEmail] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [sortBy, setSortBy] = useState(null);
+  const {setOptions} = useNavigation();
 
   const options = [
-    {title: 'My info', subtitle: 'Set up my profile', onPress: () => {}},
-    {title: 'Account', subtitle: null, onPress: () => {}},
     {
-      title: 'Default account for new contacts',
+      title: 'Mes information',
+      subtitle: 'Configurer mon profil',
+      onPress: () => {},
+    },
+    {title: 'Compte', subtitle: null, onPress: () => {}},
+    {
+      title: 'Compte par défaut',
       subtitle: email,
       onPress: () => {},
     },
-    {title: 'Contact to display', subtitle: 'All contacts', onPress: () => {}},
     {
-      title: 'Sort by',
+      title: 'Contact à afficher',
+      subtitle: 'Tous les contacts',
+      onPress: () => {},
+    },
+    {
+      title: 'Trier par',
       subtitle: sortBy,
       onPress: () => {
         setModalVisible(true);
       },
     },
-    {title: 'Name format', subtitle: 'First name first', onPress: () => {}},
+    {title: 'Format du nom', subtitle: "Le prénom d'abord", onPress: () => {}},
     {title: 'Import', subtitle: null, onPress: () => {}},
     {title: 'Export', subtitle: null, onPress: () => {}},
-    {title: 'Blocked numbers', subtitle: null, onPress: () => {}},
-    {title: 'About contacts', subtitle: null, onPress: () => {}},
+    {title: 'Numèros bloqués', subtitle: null, onPress: () => {}},
+    {
+      title: 'A propos de Kaontakita',
+      subtitle: 'Coder aver amour par Nico',
+      onPress: () => {},
+    },
   ];
 
-  const saveSetting =  (key, value) => {
-     AsyncStorage.setItem(key, value);
+  const saveSetting = (key, value) => {
+    AsyncStorage.setItem(key, value);
   };
 
   const prefArr = [
     {
-      name: 'First name',
+      name: 'Nom',
       selected: sortBy === 'First name',
       onPress: () => {
         saveSetting('sortBy', 'First name');
@@ -45,10 +59,10 @@ const Settings = () => {
       },
     },
     {
-      name: 'Last name',
+      name: 'Prémom',
       selected: sortBy === 'Last name',
       onPress: () => {
-         saveSetting('sortBy', 'Last name');
+        saveSetting('sortBy', 'Last name');
         setSortBy('Last name');
         setModalVisible(false);
       },
@@ -67,6 +81,9 @@ const Settings = () => {
 
   useEffect(() => {
     getUser();
+    setOptions({
+      title: 'Paramètres',
+    });
   }, []);
 
   return (

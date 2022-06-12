@@ -22,7 +22,7 @@ const Wrapper = ({contact}) => {
 
   const icons = [
     {
-      text: 'Call',
+      text: 'Appel',
       icon: (
         <Icon style={styles.icon} type="MaterialIcons" name="call" size={24} />
       ),

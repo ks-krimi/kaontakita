@@ -33,7 +33,7 @@ const SideMenu = ({navigation, authDispatch}) => {
   const menuItems = [
     {
       icon: <Icon type="MaterialIcons" name="settings" size={17} />,
-      name: 'Settings',
+      name: 'Paramètres',
       onPress: () => {
         navigation.closeDrawer();
         navigation.navigate(SETTINGS);
@@ -41,7 +41,7 @@ const SideMenu = ({navigation, authDispatch}) => {
     },
     {
       icon: <Icon type="MaterialIcons" name="logout" size={17} />,
-      name: 'Logout',
+      name: 'Déconnexion',
       onPress: handleLogout,
     },
   ];

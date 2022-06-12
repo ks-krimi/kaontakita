@@ -95,6 +95,10 @@ const Create = () => {
       setOptions({
         title: `${params.contact.first_name} ${params.contact.last_name}`,
       });
+    } else {
+      setOptions({
+        title: 'Créer un contact',
+      });
     }
   }, [params?.editing]);
 
