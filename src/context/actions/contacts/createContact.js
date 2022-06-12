@@ -13,7 +13,7 @@ export default form => dispatch => onSuccess => {
     phone_number: form.phone_number || '',
     // phone_number: `${form.phone_code}${form.phone_number}` || '',
     contact_picture: form.contact_picture || null,
-    is_fovorite: form.isFavorite || false,
+    is_favorite: form.is_favorite || false,
   };
   dispatch({type: CREATE_CONTACT_LOADING});
   axios

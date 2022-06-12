@@ -1,4 +1,10 @@
-import React, {useContext, useState, useRef} from 'react';
+import React, {
+  useContext,
+  useState,
+  useRef,
+  useCallback,
+  useEffect,
+} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {New} from '../../components/contacts';
 import {CONTACT_LIST} from '../../constants/routeNames';
@@ -9,7 +15,11 @@ import uploadImage from '../../helpers/uploadImage';
 const Create = () => {
   const refSheet = useRef(null);
   const {navigate} = useNavigation();
-  const [form, setForm] = useState({phone_code: '+261', country_code: 'MG'});
+  const [form, setForm] = useState({
+    phone_code: '+261',
+    country_code: 'MG',
+    is_favorite: false,
+  });
   const [localFile, setLocalFile] = useState(null);
   const [uploadLoading, setUploadLoading] = useState(false);
   const {
@@ -33,17 +43,12 @@ const Create = () => {
         });
       })(err => {
         setUploadLoading(false);
-        console.log('=>>>>>>>>>>>>>>>>>>>>>>', err);
       });
     } else {
       createContact(form)(contactsDispatch)(() => {
         navigate(CONTACT_LIST);
       });
     }
-  };
-
-  const toggleValue = () => {
-    setForm({...form, isFavorite: !form.isFavorite});
   };
 
   const openSheet = () => {
@@ -72,7 +77,6 @@ const Create = () => {
       onSubmit={onSubmit}
       error={error}
       loading={loading || uploadLoading}
-      toggleValue={toggleValue}
       refSheet={refSheet}
       openSheet={openSheet}
       closeSheet={closeSheet}

@@ -2,6 +2,9 @@ import {
   CREATE_CONTACT_FAIL,
   CREATE_CONTACT_LOADING,
   CREATE_CONTACT_SUCCESS,
+  DELETE_CONTACT_FAIL,
+  DELETE_CONTACT_LOADING,
+  DELETE_CONTACT_SUCCESS,
   GET_CONTACTS_FAIL,
   GET_CONTACTS_LOADING,
   GET_CONTACTS_SUCCESS,
@@ -69,6 +72,42 @@ const contacts = (state, {type, payload}) => {
           error: payload,
         },
       };
+
+    case DELETE_CONTACT_LOADING:
+      return {
+        ...state,
+        deleteContact: {
+          ...state.deleteContact,
+          loading: true,
+          error: null,
+        },
+      };
+    case DELETE_CONTACT_SUCCESS:
+      return {
+        ...state,
+        deleteContact: {
+          ...state.deleteContact,
+          loading: false,
+          error: null,
+        },
+        getContacts: {
+          ...state.getContacts,
+          loading: false,
+          data: state.getContacts.data.filter(
+            contact => contact.id !== payload,
+          ),
+        },
+      };
+    case DELETE_CONTACT_FAIL:
+      return {
+        ...state,
+        deleteContact: {
+          ...state.deleteContact,
+          loading: false,
+          error: payload,
+        },
+      };
+
     default:
       return state;
   }

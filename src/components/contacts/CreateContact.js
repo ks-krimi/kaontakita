@@ -15,7 +15,6 @@ const CreateContact = ({
   setForm,
   onChange,
   onSubmit,
-  toggleValue,
   refSheet,
   openSheet,
   closeSheet,
@@ -94,8 +93,10 @@ const CreateContact = ({
         <Switch
           trackColor={{false: colors.grey, true: colors.primary}}
           thumbColor={colors.white}
-          onValueChange={toggleValue}
-          value={form.isFavorite}
+          onValueChange={() => {
+            setForm({...form, is_favorite: !form.is_favorite});
+          }}
+          value={form.is_favorite}
         />
       </View>
       <Button
