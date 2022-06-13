@@ -50,7 +50,7 @@ alt="Screenshot" />
 ### Download link
 
 <!-- React native firebase version -->
-<a href="https://github.com/ks-krimi/kaontakita/blob/feature/training/android/app/release/app-release.apk">
+<a href="https://github.com/ks-krimi/kaontakita/blob/main/android/app/release/app-release.apk">
     <img src="https://img.shields.io/static/v1?label=kaontakita&message=v0.1.0&logo=Android&color=3DDC84&logoColor=3DDC84&style=for-the-badge"
     alt="Download apk" />
 </a>
